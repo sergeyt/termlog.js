@@ -1,6 +1,6 @@
 {
   "name": "termlog.js",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Wraps browser console to display log messages in web terminal",
   "author": "Sergey Todyshev <stodyshev@gmail.com>",
   "license": "MIT",
