@@ -1,0 +1,25 @@
+{
+  "name": "terminal.log",
+  "version": "0.0.1",
+  "description": "Console wrapper to display log messages in terminal.",
+  "author": "Sergey Todyshev <stodyshev@gmail.com>",
+  "license": "MIT",
+  "main": "terminal.log.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sergeyt/terminal.log"
+  },
+  "keywords": [
+    "terminal",
+    "console",
+    "browser",
+    "log"
+  ],
+  "dependencies": {
+    "term.js": "0.0.3",
+    "sprintf-js": "0.0.7"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
