@@ -7,13 +7,13 @@
   "main": "termlog.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/sergeyt/terminal.log"
+    "url": "https://github.com/sergeyt/termlog.js"
   },
   "keywords": [
     "terminal",
     "console",
     "browser",
-    "log"
+    "logger"
   ],
   "dependencies": {
     "term.js": "0.0.3",
