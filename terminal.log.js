@@ -5,6 +5,7 @@
 	function term(){
 		if (_term) return _term;
 		_term = new Terminal({
+			colors: Terminal.xtermColors,
 			cols: 80,
 			rows: 24,
 			useStyle: true,
@@ -19,22 +20,32 @@
 	}
 
 	function format(args){
-		return sprintf.apply(sprintf, toArray(args)) + '\r\n';
+		return sprintf.apply(sprintf, toArray(args));
 	}
 
-	// TODO support colors
-	function wrap(name, color){
+	var colors = {
+		log: 32,
+		warn: 33,
+		error: 41
+	};
+
+	function color(msg, name){
+		var c = colors[name];
+		return '\x1b[' + c + 'm' + msg + '\x1b[m';
+	}
+
+	function wrap(name){
 		var fn = console[name];
 		console[name + '_'] = fn; // old function for restore
 		console[name] = function(){
 			fn.apply(console, toArray(arguments));
-			var msg = format(arguments);
-			term().write(msg);
+			var msg = color(format(arguments), name);
+			term().writeln(msg);
 		};
 	}
 
-	wrap('log', null);
-	wrap('warn', null);
-	wrap('error', null);
+	wrap('log');
+	wrap('warn');
+	wrap('error');
 
 }).call(this);
