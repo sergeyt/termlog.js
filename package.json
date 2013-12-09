@@ -4,7 +4,7 @@
   "description": "Console wrapper to display log messages in terminal.",
   "author": "Sergey Todyshev <stodyshev@gmail.com>",
   "license": "MIT",
-  "main": "terminal.log.js",
+  "main": "termlog.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/sergeyt/terminal.log"
