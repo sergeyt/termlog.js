@@ -14,9 +14,11 @@
 	<script>
 		(function() {
 			window.onload = function() {
+				terminal.open();
 				console.log('log %s', 'message');
 				console.warn('warn %s', 'message');
 				console.error('error %s', 'message');
+				console.debug('debug %s', 'message');
 			};
 		}).call(this);
 	</script>
