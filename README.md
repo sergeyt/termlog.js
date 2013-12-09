@@ -4,7 +4,7 @@
 
 Wraps browser console to display log messages in web terminal powered by [term.js][term.js]
 
-[buildstatus]: https://drone.io/github.com/sergeyt/temlog.js/status.png
+[buildstatus]: https://drone.io/github.com/sergeyt/termlog.js/status.png
 [buildstatusurl]: https://drone.io/github.com/sergeyt/termlog.js/latest
 [depstatus]: https://david-dm.org/sergeyt/termlog.js.png
 [depstatusurl]: https://david-dm.org/sergeyt/termlog.js
