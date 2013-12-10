@@ -1,22 +1,23 @@
 (function(){
 
-	if (typeof console === 'undefined'){
-		return;
-	}
+	var term;
 
-	var _term;
+	// TODO add more presets
+	var options = {
+		default: Terminal.defaults
+	};
 
-	function term(){
-		if (_term) return _term;
-		_term = new Terminal({
-			colors: Terminal.xtermColors,
-			cols: 80,
-			rows: 24,
-			useStyle: true,
-			screenKeys: true
-		});
-		_term.open(document.body);
-		return _term;
+	function init(opts){
+		if (typeof opts === 'string'){
+			opts = options[opts];
+		}
+		if (!opts){
+			opts = options.default;
+		}
+
+		term = new Terminal(opts);
+		// TODO support custom container
+		term.open(document.body);
 	}
 
 	function toArray(args){ return [].slice.call(args); }
@@ -41,7 +42,7 @@
 		console[name] = function(){
 			if (fn) fn.apply(console, toArray(arguments));
 			var msg = colorize(format(arguments), name);
-			term().writeln(msg);
+			term.writeln(msg);
 		};
 	}
 
@@ -52,7 +53,9 @@
 		delete console[name + '_'];
 	}
 
-	function open(){
+	function open(opts){
+		init(opts);
+
 		Object.keys(levels).forEach(function(name){
 			wrap(name);
 		});
@@ -62,20 +65,24 @@
 		Object.keys(levels).forEach(function(name){
 			unwrap(name);
 		});
+
+		if (term){
+			term.destroy();
+			term = null;
+		}
 	}
 
-	// expose public api
-	this.terminal = {
-		open: open,
-		close: close
+	// public api
+	console.terminal = function(){
+		if (arguments.length === 0){
+			open(options.default);
+		} else if (arguments.length > 0){
+			if (arguments[0] === null){
+				close();
+			} else {
+				open(arguments[0]);
+			}
+		}
 	};
 
-	Object.keys(levels).forEach(function(name){
-		this.terminal[name] = function(){
-			console[name].apply(console, toArray(arguments));
-		};
-	});
-
-}).call((function() {
-	return this || (typeof window !== 'undefined' ? window : global);
-})());
+}).call();
