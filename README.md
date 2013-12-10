@@ -4,20 +4,27 @@
 
 Wraps browser console to display log messages in web terminal powered by [term.js][term.js]
 
-USAGE
------
+## USAGE
 
-Include `termlog.js` to your html page and call `terminal.open()` as part of initialization block like in example below.
+Include `termlog.js` to your html page and call `console.terminal()` as part of initialization block like in example below.
 
 ``` js
 window.onload = function() {
-    terminal.open();
+    console.terminal();
     console.log('log %s', 'message');
     console.warn('warn %s', 'message');
     console.error('error %s', 'message');
     console.debug('debug %s', 'message');
 };
 ```
+
+## Options
+
+> TBD
+
+## TODO
+
+* Add more options presets
 
 [buildstatus]: https://drone.io/github.com/sergeyt/termlog.js/status.png
 [buildstatusurl]: https://drone.io/github.com/sergeyt/termlog.js/latest
